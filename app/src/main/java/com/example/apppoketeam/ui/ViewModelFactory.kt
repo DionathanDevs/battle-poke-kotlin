@@ -9,6 +9,8 @@ import com.example.apppoketeam.data.repository.AppRepository
 import com.example.apppoketeam.ui.screens.admin.AdminRankingViewModel
 import com.example.apppoketeam.ui.screens.admin.AdminUserViewModel
 import com.example.apppoketeam.ui.screens.login.LoginViewModel
+import com.example.apppoketeam.ui.screens.player.BatalhaViewModel
+
 import com.example.apppoketeam.ui.screens.player.*
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -19,18 +21,17 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
     return when {
-      // ViewModels do Player
+
       modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(repository) as T
       modelClass.isAssignableFrom(PokedexViewModel::class.java) -> PokedexViewModel(repository) as T
       modelClass.isAssignableFrom(PokemonDetailViewModel::class.java) -> PokemonDetailViewModel(repository) as T
       modelClass.isAssignableFrom(MeusTimesViewModel::class.java) -> MeusTimesViewModel(repository) as T
       modelClass.isAssignableFrom(BatalhaViewModel::class.java) -> BatalhaViewModel(repository) as T
 
-      // --- LINHA ADICIONADA ---
-      // Adiciona a referência ao novo ViewModel do ranking do Player
+
       modelClass.isAssignableFrom(PlayerRankingViewModel::class.java) -> PlayerRankingViewModel(repository) as T
 
-      // ViewModel do Admin
+
       modelClass.isAssignableFrom(AdminUserViewModel::class.java) -> AdminUserViewModel(repository) as T
 
 

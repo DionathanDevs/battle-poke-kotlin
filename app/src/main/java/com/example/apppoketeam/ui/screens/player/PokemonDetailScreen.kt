@@ -30,7 +30,7 @@ fun PokemonDetailScreen(
   navController: NavController,
   pokemonName: String,
   factory: ViewModelFactory,
-  // Recebe os IDs do time e do slot (opcionais)
+
   timeId: Int?,
   slotId: Int?
 ) {

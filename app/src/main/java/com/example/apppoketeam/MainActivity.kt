@@ -12,6 +12,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.apppoketeam.ui.ViewModelFactory
+import com.example.apppoketeam.ui.screens.admin.AdminDashboard
+import com.example.apppoketeam.ui.screens.login.LoginScreen
+import com.example.apppoketeam.ui.screens.player.PlayerDashboardScreen
 import com.example.apppoketeam.ui.theme.AppPokeTeamTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,5 +33,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppPrincipal() {
+  val navController = rememberNavController()
+  val factory = ViewModelFactory(LocalContext.current.applicationContext)
 
+  NavHost(navController = navController, startDestination = "login") {
+    composable("login") {
+      LoginScreen(navController = navController, factory = factory)
+    }
+    composable("player_dashboard") {
+      PlayerDashboardScreen(rootNavController = navController)
+    }
+    composable("admin_dashboard") {
+      AdminDashboard(rootNavController = navController)
+    }
+  }
 }
