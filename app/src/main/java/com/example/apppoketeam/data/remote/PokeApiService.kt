@@ -10,5 +10,6 @@ data class PokemonStatSlot(@SerializedName("base_stat") val baseStat: Int, val s
 data class PokemonStat(val name: String)
 data class PokemonAbilitySlot(val ability: PokemonAbility)
 data class PokemonAbility(val name: String)
-interface PokeApiService { @GET("pokemon") suspend fun getPokemonList(@Query("limit") limit: Int = 151): PokemonListResponse; @GET("pokemon/{nameOrId}") suspend fun getPokemonDetails(@Path("nameOrId") nameOrId: String): PokemonDTO }
+interface PokeApiService { @GET("pokemon") suspend fun getPokemonList(@Query("limit") limit: Int = 151): PokemonListResponse;
+  @GET("pokemon/{nameOrId}") suspend fun getPokemonDetails(@Path("nameOrId") nameOrId: String): PokemonDTO }
 object RetrofitClient { val instance: PokeApiService by lazy { Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/").addConverterFactory(GsonConverterFactory.create()).build().create(PokeApiService::class.java) } }

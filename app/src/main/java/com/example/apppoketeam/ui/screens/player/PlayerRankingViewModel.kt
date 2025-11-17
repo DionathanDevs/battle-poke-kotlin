@@ -18,7 +18,7 @@ class PlayerRankingViewModel(private val repository: AppRepository) : ViewModel(
   init {
     viewModelScope.launch {
       repository.getRanking()
-        // Requisito de Lógica Kotlin (map, sortedBy)
+
         .map { list -> list.sortedByDescending { it.pontuacao } }
         .collect { rankingList ->
           _uiState.update { it.copy(ranking = rankingList) }
